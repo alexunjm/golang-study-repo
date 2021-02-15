@@ -3,5 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Hi there!")
+	// var card string = "Ace of Spades"
+	card := "Ace of Spades"
+	card = newCard()
+
+	fmt.Println(card)
 }
