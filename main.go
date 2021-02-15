@@ -9,7 +9,7 @@ type contactInfo struct {
 type person struct {
 	firstName string
 	lastName  string
-	contact   contactInfo
+	contactInfo
 }
 
 /*
@@ -22,22 +22,23 @@ func main() {
 } */
 func main() {
 	var alex person
-	fmt.Println(alex)
-	fmt.Printf("%+v\n\n", alex) // plus + to show keys
+	alex.print()
 
 	alex = person{
 		firstName: "Alex",
 		lastName:  "Jaramillo",
-		contact: contactInfo{
-			email: "",
+		contactInfo: contactInfo{
+			email: "pending",
 		},
 	}
 
-	// fmt.Println(alex)
-	fmt.Printf("%v\n", alex)
+	alex.print()
 
 	alex.lastName = "Muñoz"
-	alex.contact.email = "contacto@alexanderjaramillo.com"
-	alex.contact.zip = 040062
-	fmt.Printf("%+v\n", alex) // plus + to show keys
+	alex.contactInfo.email = "contacto@alexanderjaramillo.com"
+	alex.contactInfo.zip = 040062
+}
+
+func (p person) print() {
+	fmt.Printf("%+v\n", p) // plus + to show keys
 }
