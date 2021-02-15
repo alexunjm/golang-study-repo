@@ -1,12 +1,11 @@
 package main
 
-import "fmt"
-
 func main() {
-	cards := sliceOfCards()
+	cards := getCards()
 
-	// fmt.Println(cards)
-	for i, card := range cards {
-		fmt.Println(i, card)
-	}
+	cards.print()
+}
+
+func getCards() deck {
+	return deck{"Element1", "Element2"}
 }
