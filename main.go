@@ -1,19 +1,13 @@
 package main
 
+import "fmt"
+
+type person struct {
+	firstName string
+	lastName string
+}
+
 func main() {
-	cards := newDeck()
-
-	// cards.print()
-	// hold, change := deal(cards, 2)
-	// hold, _ := deal(cards, 2)
-
-	// hold.print()
-	// change.print()
-
-	// fmt.Println(hold.toString())
-
-	// cards.saveToFile("my_cards")
-	// newDeckFromFile("my_cards")
-	cards.shuffle()
-	cards.print()
+	alex := person{"Alex", "Jaramillo"}
+	fmt.Println(alex)
 }
