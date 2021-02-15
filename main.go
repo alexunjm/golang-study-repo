@@ -3,9 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	// var card string = "Ace of Spades"
-	card := "Ace of Spades"
-	card = newCard()
+	cards := sliceOfCards()
 
-	fmt.Println(card)
+	// fmt.Println(cards)
+	for i, card := range cards {
+		fmt.Println(i, card)
+	}
 }
