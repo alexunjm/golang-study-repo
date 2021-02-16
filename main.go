@@ -15,7 +15,6 @@ type person struct {
 func main() {
 	var alex person
 	alex.print("empty or default person struct\n")
-	emptyPersonPointer := &alex
 
 	alex = person{
 		firstName: "Alex",
@@ -24,19 +23,14 @@ func main() {
 			email: "contacto@alexanderjaramillo.com",
 		},
 	}
-	asignedPersonPointer := &alex
 	alex.print("before update without pointer\n")
 
 	alex.updateNameCheck("Jhon")
 	alex.print("after update without pointer\n")
 
-	// creates a pointer to RAM address
-	alexPointer := &alex
-	alexPointer.updateName("Jhon")
+	alex.updateName("Jhon")
 	alex.print("after update using pointer\n")
 
-	fmt.Println("emptyPersonPointer=>", emptyPersonPointer)
-	fmt.Println("asignedPersonPointer=>", asignedPersonPointer)
 }
 
 func (p person) print(prefix string) {
@@ -50,10 +44,6 @@ func (p person) updateNameCheck(newFirstName string) {
 	p.firstName = newFirstName
 }
 
-/*
-func (pointerToPerson *person) updateName(newFirstName string) {
-	(*pointerToPerson).firstName = newFirstName
-} */
 // receiver says that p is a pointer to RAM address location,
 // and the value of address is person struct type
 func (p *person) updateName(newFirstName string) {
