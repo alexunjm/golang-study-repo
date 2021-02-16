@@ -20,8 +20,8 @@ func main() {
 	for _, link := range links {
 		go checkStatus(link, c)
 	}
-	for {
-		go checkStatus(<-c, c)
+	for l := range c {
+		go checkStatus(l, c)
 	}
 
 }
