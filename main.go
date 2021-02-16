@@ -20,8 +20,8 @@ func main() {
 	for _, link := range links {
 		go checkStatus(link, c)
 	}
-	for i := 0; i < len(links); i++ {
-		fmt.Println(<-c)
+	for {
+		go checkStatus(<-c, c)
 	}
 
 }
@@ -30,9 +30,9 @@ func checkStatus(url string, c chan string) {
 	_, err := http.Get(url)
 	if err != nil {
 		fmt.Println(url, "is down")
-		c <- "Might be down I think"
 	}
 
 	fmt.Println(url, "is ok!")
-	c <- "Yep its up"
+	c <- url
+	// c <- "Yep its up"
 }
