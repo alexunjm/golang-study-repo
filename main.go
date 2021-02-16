@@ -12,33 +12,51 @@ type person struct {
 	contactInfo
 }
 
-/*
-func main() {
-	alex := person{
-		firstName:"Alex",
-		lastName:"Jaramillo",
-	}
-	fmt.Println(alex)
-} */
 func main() {
 	var alex person
-	alex.print()
+	alex.print("empty or default person struct\n")
+	emptyPersonPointer := &alex
 
 	alex = person{
 		firstName: "Alex",
 		lastName:  "Jaramillo",
 		contactInfo: contactInfo{
-			email: "pending",
+			email: "contacto@alexanderjaramillo.com",
 		},
 	}
+	asignedPersonPointer := &alex
+	alex.print("before update without pointer\n")
 
-	alex.print()
+	alex.updateNameCheck("Jhon")
+	alex.print("after update without pointer\n")
 
-	alex.lastName = "Muñoz"
-	alex.contactInfo.email = "contacto@alexanderjaramillo.com"
-	alex.contactInfo.zip = 040062
+	// creates a pointer to RAM address
+	alexPointer := &alex
+	alexPointer.updateName("Jhon")
+	alex.print("after update using pointer\n")
+
+	fmt.Println("emptyPersonPointer=>", emptyPersonPointer)
+	fmt.Println("asignedPersonPointer=>", asignedPersonPointer)
 }
 
-func (p person) print() {
-	fmt.Printf("%+v\n", p) // plus + to show keys
+func (p person) print(prefix string) {
+	fmt.Printf("%s %+v\n", prefix, p) // plus + to show keys
+}
+
+// creates a p person as a new struct on RAM
+// then, update last created inside func.
+// The source struct expected to update does not change
+func (p person) updateNameCheck(newFirstName string) {
+	p.firstName = newFirstName
+}
+
+/*
+func (pointerToPerson *person) updateName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
+} */
+// receiver says that p is a pointer to RAM address location,
+// and the value of address is person struct type
+func (p *person) updateName(newFirstName string) {
+	// *p takes the value of RAM address (the person)
+	(*p).firstName = newFirstName
 }
