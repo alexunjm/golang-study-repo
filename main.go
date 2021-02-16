@@ -2,28 +2,28 @@ package main
 
 import "fmt"
 
-func main() {
-	colors := map[string]string{
-		"red":   "#ff0000",
-		"green": "#00ff00",
-	}
-	fmt.Println(colors)
-
-	// var otherColors map[string]string
-	otherColors := make(map[string]string)
-	otherColors["white"] = "#ffffff"
-	fmt.Println(otherColors)
-
-	otherMap := make(map[int]string)
-	otherMap[10] = "#000010"
-	fmt.Println(otherMap)
-
-	delete(colors, "green")
-	printMap(colors)
+type bot interface {
+	getGreeting() string
 }
 
-func printMap(m map[string]string) {
-	for k, v := range m {
-		fmt.Println(k, v)
-	}
+type englishBot struct{}
+type spanishBot struct{}
+
+func main() {
+	eb := englishBot{}
+	sb := spanishBot{}
+
+	printGreeting(eb)
+	printGreeting(sb)
+}
+
+func printGreeting(b bot) {
+	fmt.Println(b.getGreeting())
+}
+
+func (englishBot) getGreeting() string {
+	return "Hi there!"
+}
+func (spanishBot) getGreeting() string {
+	return "Hola!"
 }
