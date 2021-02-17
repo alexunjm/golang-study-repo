@@ -1,8 +1,13 @@
 # hello world example
 
-## run file
-go run main.go
+## some commands to start with gin-gonic framwork
+    $ go get -u github.com/gin-gonic/gin
 
-## build file
-go build main.go
-./main
+    $ curl https://raw.githubusercontent.com/gin-gonic/examples/master/basic/main.go > main.go
+
+### run file
+    $ go run main.go
+
+### build file and exec compiled
+    $ go build main.go
+    $ ./main
