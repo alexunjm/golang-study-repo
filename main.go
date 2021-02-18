@@ -2,25 +2,19 @@ package main
 
 import (
 	"fmt"
-	"os"
 )
 
 func main() {
-	city := os.Args[1]
+	i := 142
 
-	switch city {
-	case "Paris", "Lyon":
-		fmt.Println("France")
-	case "Tokyo":
-		fmt.Println("Japan")
-		// default:
-		// 	fmt.Printf("%v was not handled\n", city)
-
+	switch {
+	case i > 100:
+		fmt.Print("big positive number")
+	case i > 0:
+		fmt.Print("positive number")
+	default:
+		fmt.Print("number")
 	}
 
-	// if city == "Paris" || city == "Lyon" {
-	// 	fmt.Println("France")
-	// } else if city == "Tokyo" {
-	// 	fmt.Println("Japan")
-	// }
+	fmt.Println()
 }
