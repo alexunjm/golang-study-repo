@@ -3,38 +3,44 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
 
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Println("Gimme a month name.\n something like \n$ go run main.go Dec")
+	args := os.Args
+	if len(args) != 2 {
+		fmt.Println("Give me the magnitude of the earthquake.")
 		return
 	}
 
-	// m := os.Args[1]
-
-	// if m == "Dec" || m == "Jan" || m == "Feb" {
-	// 	fmt.Println("Winter")
-	// } else if m == "Mar" || m == "Apr" || m == "May" {
-	// 	fmt.Println("Spring")
-	// } else if m == "Jun" || m == "Jul" || m == "Aug" {
-	// 	fmt.Println("Summer")
-	// } else if m == "Sep" || m == "Oct" || m == "Nov" {
-	// 	fmt.Println("Fall")
-	// } else {
-	// 	fmt.Println("ERROR: not a month.")
-	// }
-
-	switch m := os.Args[1]; m {
-	case "Dec", "Jan", "Feb":
-		fmt.Println("Winter")
-	case "Mar", "Apr", "May":
-		fmt.Println("Spring")
-	case "Jun", "Jul", "Aug":
-		fmt.Println("Summer")
-	case "Sep", "Oct", "Nov":
-		fmt.Println("Fall")
-	default:
-		fmt.Printf("%q is not a month.\n", m)
+	richter, err := strconv.ParseFloat(args[1], 64)
+	if err != nil {
+		fmt.Println("I couldn't get that, sorry.")
+		return
 	}
+
+	var desc string
+
+	switch r := richter; {
+	case r < 2:
+		desc = "micro"
+	case r >= 2 && r < 3:
+		desc = "very minor"
+	case r >= 3 && r < 4:
+		desc = "minor"
+	case r >= 4 && r < 5:
+		desc = "light"
+	case r >= 5 && r < 6:
+		desc = "moderate"
+	case r >= 6 && r < 7:
+		desc = "strong"
+	case r >= 7 && r < 8:
+		desc = "major"
+	case r >= 8 && r < 10:
+		desc = "great"
+	default:
+		desc = "massive"
+	}
+
+	fmt.Printf("%.2f is %s\n", richter, desc)
 }
