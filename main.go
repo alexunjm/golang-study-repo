@@ -4,27 +4,34 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 )
 
-const usage = `[command] [string]
-Available commands: lower, upper and title`
-
 func main() {
-	args := os.Args
-	if len(args) != 3 {
-		fmt.Println(usage)
+	if len(os.Args) != 2 {
+		fmt.Println("Give me a month name")
 		return
 	}
 
-	cmd, str := args[1], args[2]
-	switch cmd {
-	case "lower":
-		fmt.Println(strings.ToLower(str))
-	case "upper":
-		fmt.Println(strings.ToUpper(str))
-	case "title":
-		fmt.Println(strings.Title(str))
+	year := time.Now().Year()
+	leap := year%4 == 0 && (year%100 != 0 || year%400 == 0)
+
+	days, month := 28, os.Args[1]
+
+	switch strings.ToLower(month) {
+	case "april", "june", "september", "november":
+		days = 30
+	case "january", "march", "may", "july",
+		"august", "october", "december":
+		days = 31
+	case "february":
+		if leap {
+			days = 29
+		}
 	default:
-		fmt.Printf("Unknown command: %q\n", cmd)
+		fmt.Printf("%q is not a month.\n", month)
+		return
 	}
+
+	fmt.Printf("%q has %d days.\n", month, days)
 }
