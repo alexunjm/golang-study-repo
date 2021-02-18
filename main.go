@@ -5,16 +5,21 @@ import (
 )
 
 func main() {
-	var sum int
+	var (
+		sum int
+		i   = 1
+	)
 
-	// sum += 1
-	// sum += 2
-	// sum += 3
-	// sum += 4
-	// sum += 5
+	for {
+		if i > 5 {
+			break
+		}
 
-	for i := 1; i <= 1000; i++ {
 		sum += i
+
+		fmt.Println(i, "-->", sum)
+
+		i++
 	}
 
 	fmt.Println(sum)
