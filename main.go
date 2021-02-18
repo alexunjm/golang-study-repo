@@ -2,26 +2,30 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
+	"os"
+	"strings"
 )
 
+const corpus = "lazy cat jumps again and again and again"
+
 func main() {
-	// rand.Seed(10)
-	// rand.Seed(100)
+	words := strings.Fields(corpus)
+	query := os.Args[1:]
 
-	// t := time.Now()
-	// rand.Seed(t.UnixNano())
+	// after the inner loop breaks
+	// this parent loop will look for the next queried word
+	for _, q := range query {
 
-	// ^-- same:
+		// "break" will terminate this loop
+		for i, w := range words {
+			if q == w {
+				fmt.Printf("#%-2d: %q\n", i+1, w)
 
-	rand.Seed(time.Now().UnixNano())
+				// find the first word then break
+				// the nested loop
+				break
+			}
+		}
 
-	guess := 10
-
-	for n := 0; n != guess; {
-		n = rand.Intn(guess + 1)
-		fmt.Printf("%d ", n)
 	}
-	fmt.Println()
 }
