@@ -4,35 +4,31 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 )
 
+const usage = `
+Feet to Meters
+--------------
+This program converts feet into meters.
+Usage: go run main.go 30
+feet [feetsToConvert]`
+
 func main() {
-	// go run main.go aa
-	age := os.Args[1]
-
-	// Atoi returns an int and an error value
-	// So, you need to handle the errors
-
-	n, err := strconv.Atoi(age)
-
-	// handle the error immediately and quit
-	// don't do anything else here
-
-	if err != nil {
-		fmt.Println("ERROR:", err)
-
-		// quits/returns from the main function
-		// so, the program ends
+	if len(os.Args) < 2 {
+		fmt.Println(strings.TrimSpace(usage))
 		return
 	}
 
-	// DO NOT DO THIS:
-	// else {
-	//   happy path
-	// }
+	arg := os.Args[1]
 
-	// DO THIS:
+	feet, err := strconv.ParseFloat(arg, 64)
+	if err != nil {
+		fmt.Printf("error: '%s' is not a number.\n", arg)
+		return
+	}
 
-	// happy path (err is nil)
-	fmt.Printf("SUCCESS: Converted %q to %d.\n", age, n)
+	meters := feet * 0.3048
+
+	fmt.Printf("%g feet is %g meters.\n", feet, meters)
 }
