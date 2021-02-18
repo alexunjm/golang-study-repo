@@ -2,29 +2,46 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
-// EXERCISE: Get the `max` from the user
-//           And create the table according to that.
-
-const max = 5
-
 func main() {
-	// print the header
-	fmt.Printf("%5s", "X")
-	for i := 0; i <= max; i++ {
-		fmt.Printf("%5d", i)
-	}
-	fmt.Println()
+	// i := 1
+	// fmt.Printf("%q\n", os.Args[1])
+	// fmt.Printf("%q\n", os.Args[i])
 
-	for i := 0; i <= max; i++ {
-		// print the vertical header
-		fmt.Printf("%5d", i)
+	// i++
+	// fmt.Printf("%q\n", os.Args[2])
+	// fmt.Printf("%q\n", os.Args[i])
 
-		// print the cells
-		for j := 0; j <= max; j++ {
-			fmt.Printf("%5d", i*j)
-		}
-		fmt.Println()
+	// i++
+	// fmt.Printf("%q\n", os.Args[3])
+	// fmt.Printf("%q\n", os.Args[i])
+
+	// --------------------------------
+	// #1st way:
+	// --------------------------------
+
+	// for i := 1; i < len(os.Args); i++ {
+	// 	fmt.Printf("%q\n", os.Args[i])
+	// }
+
+	// --------------------------------
+	// #2nd way:
+	// --------------------------------
+
+	// for i, v := range os.Args {
+	// 	if i == 0 {
+	// 		continue
+	// 	}
+	// 	fmt.Printf("%q\n", v)
+	// }
+
+	// --------------------------------
+	// #3rd way (best):
+	// --------------------------------
+
+	for _, v := range os.Args[1:] {
+		fmt.Printf("%q\n", v)
 	}
 }
