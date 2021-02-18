@@ -12,20 +12,30 @@ func main() {
 	words := strings.Fields(corpus)
 	query := os.Args[1:]
 
-	// after the inner loop breaks
-	// this parent loop will look for the next queried word
+	// labels and other names do not share the same scope
+	// this will work even though `queries` label exists
+	//
+	// var queries string
+	// _ = queries
+
+	// this label labels the parent loop below.
+	// label's scope is the whole func main()
+queries:
 	for _, q := range query {
 
-		// "break" will terminate this loop
+	search:
 		for i, w := range words {
+			switch q {
+			case "and", "or", "the":
+				break search
+			}
+
 			if q == w {
 				fmt.Printf("#%-2d: %q\n", i+1, w)
 
-				// find the first word then break
-				// the nested loop
-				break
+				// find the first word then quit
+				continue queries
 			}
 		}
-
 	}
 }
