@@ -22,6 +22,10 @@ func main() {
 
 	arg := os.Args[1]
 
+	// short if form
+	// if n, err := strconv.Atoi("42"); err == nil {
+	// 	fmt.Println("There was no error, n is", n)
+	// }
 	feet, err := strconv.ParseFloat(arg, 64)
 	if err != nil {
 		fmt.Printf("error: '%s' is not a number.\n", arg)
