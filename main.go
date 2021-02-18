@@ -9,9 +9,11 @@ func main() {
 
 	switch {
 	case i > 100:
-		fmt.Print("big positive number")
+		fmt.Print("big ")
+		fallthrough
 	case i > 0:
-		fmt.Print("positive number")
+		fmt.Print("positive ")
+		fallthrough
 	default:
 		fmt.Print("number")
 	}
