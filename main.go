@@ -3,37 +3,28 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
-const (
-	usage       = "Usage: [username] [password]"
-	errUser     = "Access denied for %q.\n"
-	errPwd      = "Invalid password for %q.\n"
-	accessOK    = "Access granted to %q.\n"
-	user, user2 = "jack", "inanc"
-	pass, pass2 = "1888", "1879"
-)
+const usage = `[command] [string]
+Available commands: lower, upper and title`
 
 func main() {
 	args := os.Args
-
 	if len(args) != 3 {
 		fmt.Println(usage)
 		return
 	}
 
-	u, p := args[1], args[2]
-
-	// More readable, right? 👍
-	switch {
-	case u != user && u != user2:
-		fmt.Printf(errUser, u)
-	case u == user && p == pass:
-		// notice this one (no more duplication)
-		fallthrough
-	case u == user2 && p == pass2:
-		fmt.Printf(accessOK, u)
+	cmd, str := args[1], args[2]
+	switch cmd {
+	case "lower":
+		fmt.Println(strings.ToLower(str))
+	case "upper":
+		fmt.Println(strings.ToUpper(str))
+	case "title":
+		fmt.Println(strings.Title(str))
 	default:
-		fmt.Printf(errPwd, u)
+		fmt.Printf("Unknown command: %q\n", cmd)
 	}
 }
