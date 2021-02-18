@@ -3,28 +3,36 @@ package main
 import (
 	"fmt"
 	"os"
-	"runtime"
 	"strconv"
 )
 
 func main() {
-	fmt.Println(runtime.NumCPU())
-	fmt.Println(runtime.Version())
+	// go run main.go aa
+	age := os.Args[1]
 
-	// Itoa doesn't return any errors
-	// So, you don't have to handle the errors for it
+	// Atoi returns an int and an error value
+	// So, you need to handle the errors
 
-	s := strconv.Itoa(42)
+	n, err := strconv.Atoi(age)
 
-	fmt.Println(s)
+	// handle the error immediately and quit
+	// don't do anything else here
 
-	// Atoi returns an error value
-	// So, you should always check it
+	if err != nil {
+		fmt.Println("ERROR:", err)
 
-	// go run main.go 39
-	n, err := strconv.Atoi(os.Args[1])
+		// quits/returns from the main function
+		// so, the program ends
+		return
+	}
 
-	fmt.Println("Converted number    :", n)
-	fmt.Println("Returned error value:", err)
+	// DO NOT DO THIS:
+	// else {
+	//   happy path
+	// }
 
+	// DO THIS:
+
+	// happy path (err is nil)
+	fmt.Printf("SUCCESS: Converted %q to %d.\n", age, n)
 }
