@@ -4,30 +4,27 @@ import (
 	"fmt"
 )
 
+// EXERCISE: Get the `max` from the user
+//           And create the table according to that.
+
+const max = 5
+
 func main() {
-	var (
-		sum int
-		i   = 0
-	)
-
-	for {
-		i++
-
-		if i > 10 {
-			break
-		}
-
-		if i%2 != 0 {
-			// this continue creates an endless loop
-			// since the code never increases the i
-			continue
-		}
-
-		sum += i
-
-		fmt.Println(i, "-->", sum)
-
+	// print the header
+	fmt.Printf("%5s", "X")
+	for i := 0; i <= max; i++ {
+		fmt.Printf("%5d", i)
 	}
+	fmt.Println()
 
-	fmt.Println(sum)
+	for i := 0; i <= max; i++ {
+		// print the vertical header
+		fmt.Printf("%5d", i)
+
+		// print the cells
+		for j := 0; j <= max; j++ {
+			fmt.Printf("%5d", i*j)
+		}
+		fmt.Println()
+	}
 }
