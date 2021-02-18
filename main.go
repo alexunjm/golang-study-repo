@@ -2,20 +2,28 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
-	// i := 10
+	// time.Now() gets the current time
+	// and in turn, .Hour() gets the current hour from it
 
-	// true is in a comment now
-	// you can delete that part if you want
-	// it's by default true anyway.
-	switch i := -10; /* true */ {
-	case i > 0:
-		fmt.Println("positive")
-	case i < 0:
-		fmt.Println("negative")
-	default:
-		fmt.Println("zero")
+	h := time.Now().Hour()
+	fmt.Println("Current hour is", h)
+
+	switch h := time.Now().Hour(); {
+	case h >= 18: // 18 to 23
+		fmt.Println("good evening")
+	case h >= 12: // 12 to 18
+		fmt.Println("good afternoon")
+	case h >= 6: // 6 to 12
+		fmt.Println("good morning")
+	default: // 0 to 5
+		fmt.Println("good night")
 	}
+
+	// h is not available here
+	// it's bound to switch statement's block
+	// fmt.Println(h)
 }
