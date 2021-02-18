@@ -3,36 +3,24 @@ package main
 import (
 	"fmt"
 	"os"
-	"strconv"
-	"strings"
 )
 
-const usage = `
-Feet to Meters
---------------
-This program converts feet into meters.
-Usage: go run main.go 30
-feet [feetsToConvert]`
-
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Println(strings.TrimSpace(usage))
-		return
+	city := os.Args[1]
+
+	switch city {
+	case "Paris", "Lyon":
+		fmt.Println("France")
+	case "Tokyo":
+		fmt.Println("Japan")
+		// default:
+		// 	fmt.Printf("%v was not handled\n", city)
+
 	}
 
-	arg := os.Args[1]
-
-	// short if form
-	// if n, err := strconv.Atoi("42"); err == nil {
-	// 	fmt.Println("There was no error, n is", n)
+	// if city == "Paris" || city == "Lyon" {
+	// 	fmt.Println("France")
+	// } else if city == "Tokyo" {
+	// 	fmt.Println("Japan")
 	// }
-	feet, err := strconv.ParseFloat(arg, 64)
-	if err != nil {
-		fmt.Printf("error: '%s' is not a number.\n", arg)
-		return
-	}
-
-	meters := feet * 0.3048
-
-	fmt.Printf("%g feet is %g meters.\n", feet, meters)
 }
