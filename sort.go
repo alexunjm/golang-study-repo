@@ -2,7 +2,6 @@ package main
 
 type intSlice []int
 
-/*
 func sort(sliceArg intSlice) intSlice {
 	var (
 		slicePointerValue int
@@ -38,7 +37,7 @@ func sort(sliceArg intSlice) intSlice {
 	}
 	return slice
 }
-*/
+
 func movement(slice intSlice, found int, position int) {
 	if found == position {
 		return

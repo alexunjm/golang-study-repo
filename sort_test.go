@@ -4,10 +4,9 @@ import (
 	"testing"
 )
 
-/*
 func Test_sortr(t *testing.T) {
 	type args struct {
-		s intSlice
+		slice intSlice
 	}
 	type expected struct {
 		value intSlice
@@ -18,40 +17,57 @@ func Test_sortr(t *testing.T) {
 		expected expected
 	}{
 		{
-			"sort empty slice",
-			args{s: intSlice{}},
-			expected{value: intSlice{}},
+			name: "sort empty slice",
+			args: args{
+				slice: intSlice{},
+			},
+			expected: expected{
+				value: intSlice{},
+			},
 		},
 		{
-			"sort one element slice",
-			args{s: intSlice{1}},
-			expected{value: intSlice{1}},
+			name: "sort one element slice",
+			args: args{
+				slice: intSlice{1},
+			},
+			expected: expected{
+				value: intSlice{1},
+			},
 		},
 		{
-			"sort two sorted elements slice",
-			args{s: intSlice{1, 2}},
-			expected{value: intSlice{1, 2}},
+			name: "sort two sorted elements slice",
+			args: args{
+				slice: intSlice{1, 2},
+			},
+			expected: expected{
+				value: intSlice{1, 2},
+			},
 		},
 		{
-			"sort two elements slice",
-			args{s: intSlice{3, 2}},
-			expected{value: intSlice{2, 3, 4}},
+			name: "sort two elements slice",
+			args: args{
+				slice: intSlice{4, 3, 2},
+			},
+			expected: expected{
+				value: intSlice{2, 3, 4},
+			},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			actual := sort(tt.args.s)
-			if !tt.args.slice.elementsEqual(tt.expected.value.value) {
-				t.Log("========================================")
-				t.Errorf("\n\nsort(%d):\n expected %d,\n actual %d\n",
-					tt.args.s,
+			got := sort(tt.args.slice)
+			if !got.elementsEqual(tt.expected.value) {
+				t.Logf("\n\n============================\n UNEXPECTED %v", tt.name)
+				t.Errorf("\n\nsort(%d):\n expected %d,\n got %d\n",
+					tt.args.slice,
 					tt.expected.value,
-					actual)
-				t.Log("========================================")
+					got)
+				t.Log("\n============================\n\n")
+
 			}
 		})
 	}
-} */
+}
 
 func Test_reverse(t *testing.T) {
 	type args struct {
