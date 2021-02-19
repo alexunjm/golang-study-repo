@@ -10,5 +10,5 @@ func main() {
 
 	// prettyslice.Show("ages", ages)
 	fmt.Printf("\n %v\n", ages)
-	sort(ages)
+	// sort(ages)
 }

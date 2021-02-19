@@ -1,13 +1,16 @@
 package main
 
-func sort(sliceArg []int) []int {
+type intSlice []int
+
+/*
+func sort(sliceArg intSlice) intSlice {
 	var (
 		slicePointerValue int
 		pointer           = 1
 		pointerLeft       int
 	)
 	// println(&sliceArg)
-	slice := make([]int, len(sliceArg))
+	slice := make(intSlice, len(sliceArg))
 	copy(slice, sliceArg)
 	// println(&slice)
 
@@ -35,8 +38,8 @@ func sort(sliceArg []int) []int {
 	}
 	return slice
 }
-
-func movement(slice []int, found int, position int) {
+*/
+func movement(slice intSlice, found int, position int) {
 	if found == position {
 		return
 	}
@@ -53,15 +56,15 @@ func movement(slice []int, found int, position int) {
 	// prettyslice.Show(strconv.Itoa(found)+"m"+strconv.Itoa(position), slice)
 }
 
-func reverse(s []interface{}) []interface{} {
-	a := make([]interface{}, len(s))
-	copy(a, s)
+func reverse(slice intSlice) intSlice {
+	s := make(intSlice, len(slice))
+	copy(s, slice)
 
 	var opp int
-	for pointer := len(a)/2 - 1; pointer >= 0; pointer-- {
-		opp = len(a) - 1 - pointer
-		a[pointer], a[opp] = a[opp], a[pointer]
+	for pointer := len(s)/2 - 1; pointer >= 0; pointer-- {
+		opp = len(s) - 1 - pointer
+		s[pointer], s[opp] = s[opp], s[pointer]
 	}
 
-	return a
+	return s
 }
