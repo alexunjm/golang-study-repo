@@ -1,5 +1,7 @@
 package intslice
 
+import "fmt"
+
 /*
 
 	public
@@ -11,6 +13,19 @@ type MyIntSlice []int
 
 // Sort elements
 func Sort(sliceArg MyIntSlice) MyIntSlice {
+	fmt.Println(sliceArg)
+
+	size := len(sliceArg)
+	slice := make(MyIntSlice, size*3)
+	copy(slice[size:size*2], sliceArg)
+
+	startIndex := makeMoves(slice, size, size*2)
+	fmt.Println("fin")
+
+	return slice[startIndex : startIndex+size]
+}
+
+func makeMoves(slice MyIntSlice, startIndex int, endIndex int) int {
 
 	var (
 		slicePointerValue int
@@ -20,20 +35,8 @@ func Sort(sliceArg MyIntSlice) MyIntSlice {
 		pointerRight      int
 	)
 
-	size := len(sliceArg)
-	slice := make(MyIntSlice, size*2)
-	copy(slice[size:], sliceArg)
-
-	// splitIndex := len(slice) / 2
-	// makeMoves(pointer, slicePointerValue, slice[:splitIndex], pointerRight, pointerLeft, pointerChange)
-	// makeMoves(pointer, slicePointerValue, slice[splitIndex:], pointerRight, pointerLeft, pointerChange)
-	makeMoves(pointer, slicePointerValue, slice[size:], pointerRight, pointerLeft, pointerChange)
-
-	return slice[size:]
-}
-
-func makeMoves(pointer int, slicePointerValue int, slice MyIntSlice, pointerRight int, pointerLeft int, pointerChange int) {
-	for pointer, slicePointerValue = range slice {
+	tmpSlice := slice[startIndex:endIndex]
+	for pointer, slicePointerValue = range tmpSlice {
 
 		pointerRight = pointer - 1
 
@@ -46,9 +49,9 @@ func makeMoves(pointer int, slicePointerValue int, slice MyIntSlice, pointerRigh
 				pointerChange = 0
 				break
 			}
-			if slice[pointerRight] > slicePointerValue {
+			if tmpSlice[pointerRight] > slicePointerValue {
 				pointerRight--
-				if slice[pointerLeft] > slicePointerValue {
+				if tmpSlice[pointerLeft] > slicePointerValue {
 					if pointerLeft <= 0 {
 						pointerChange = 0
 					}
@@ -61,8 +64,11 @@ func makeMoves(pointer int, slicePointerValue int, slice MyIntSlice, pointerRigh
 				break
 			}
 		}
-		movement(slice, pointer, pointerChange)
+		movement(tmpSlice, pointer, pointerChange)
 	}
+	fmt.Println(slice)
+
+	return startIndex
 }
 
 /*
@@ -78,11 +84,13 @@ func movement(slice MyIntSlice, found int, position int) {
 	}
 
 	value := slice[found]
-
-	for pointer := found; pointer > position; pointer-- {
-		slice[pointer] = slice[pointer-1]
-	}
-
+	/*
+		for pointer := found; pointer > position; pointer-- {
+			slice[pointer] = slice[pointer-1]
+		}
+	*/
+	toprnt := append(slice[position+1:position+1], slice[position:found]...)
+	fmt.Printf(" > %v\n\n", toprnt)
 	slice[position] = value
 }
 

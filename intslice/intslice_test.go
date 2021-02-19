@@ -16,23 +16,24 @@ var _ = Describe("intslice.MyIntSlice", func() {
 		twoElementSlice         intslice.MyIntSlice
 		moreThanTwoElementSlice intslice.MyIntSlice
 		manyElementSlice        intslice.MyIntSlice
+		slice1                  intslice.MyIntSlice
+		slice2                  intslice.MyIntSlice
 	)
 
-	BeforeSuite(func() {
-		// BeforeEach(func() {
+	BeforeEach(func() {
 
 		emptySlice = intslice.MyIntSlice{}
 		oneElementSlice = intslice.MyIntSlice{1}
 		twoElementSlice = intslice.MyIntSlice{2, 1}
 		moreThanTwoElementSlice = intslice.MyIntSlice{5, 7, 4, 9, 1}
 		rand.Seed(time.Now().UnixNano())
-		arr := [9999]int{}
-		for i := 0; i < 9999; i++ {
-			arr[i] = rand.Intn(9999)
-		}
-		manyElementSlice = arr[:]
-	})
+		manyElementSlice = rand.Perm(8)
+		slice1 = make(intslice.MyIntSlice, len(manyElementSlice))
+		copy(slice1, manyElementSlice)
+		slice2 = make(intslice.MyIntSlice, len(manyElementSlice))
+		copy(slice2, manyElementSlice)
 
+	})
 	Describe("slice creation", func() {
 		Context("with no elements", func() {
 			It("should be an empty int slice", func() {
@@ -114,20 +115,13 @@ var _ = Describe("intslice.MyIntSlice", func() {
 			})
 		})
 	})
-
 	Describe("compare sorts", func() {
-
-		slice1 := make(intslice.MyIntSlice, len(manyElementSlice))
-		copy(slice1, manyElementSlice)
 
 		Context("with many unsorted elements", func() {
 			It("should be have same int values on int slice with same elements sorted go", func() {
 				Expect(sort.IntsAreSorted(intslice.Sort(slice1))).Should(BeTrue())
 			})
 		})
-
-		slice2 := make(intslice.MyIntSlice, len(manyElementSlice))
-		copy(slice2, manyElementSlice)
 
 		Context("with many unsorted elements", func() {
 			It("should be have same int values on int slice with same elements sorted mine", func() {
