@@ -1,7 +1,5 @@
 package intslice
 
-import "fmt"
-
 /*
 
 	public
@@ -13,16 +11,17 @@ type MyIntSlice []int
 
 // Sort elements
 func Sort(sliceArg MyIntSlice) MyIntSlice {
-	fmt.Println(sliceArg)
 
 	size := len(sliceArg)
-	slice := make(MyIntSlice, size*3)
-	copy(slice[size:size*2], sliceArg)
 
-	startIndex := makeMoves(slice, size, size*2)
-	fmt.Println("fin")
+	// startIndex := makeMoves(slice, size, size*2)
 
-	return slice[startIndex : startIndex+size]
+	// return slice[startIndex : startIndex+size]
+
+	// startIndex :=
+	makeMoves(sliceArg, 0, size)
+
+	return sliceArg
 }
 
 func makeMoves(slice MyIntSlice, startIndex int, endIndex int) int {
@@ -66,7 +65,6 @@ func makeMoves(slice MyIntSlice, startIndex int, endIndex int) int {
 		}
 		movement(tmpSlice, pointer, pointerChange)
 	}
-	fmt.Println(slice)
 
 	return startIndex
 }
@@ -77,10 +75,10 @@ func makeMoves(slice MyIntSlice, startIndex int, endIndex int) int {
 
 */
 
-func movement(slice MyIntSlice, found int, position int) {
+func movement(slice MyIntSlice, found int, position int) *MyIntSlice {
 
 	if found == position {
-		return
+		return &slice
 	}
 
 	value := slice[found]
@@ -89,9 +87,9 @@ func movement(slice MyIntSlice, found int, position int) {
 			slice[pointer] = slice[pointer-1]
 		}
 	*/
-	toprnt := append(slice[position+1:position+1], slice[position:found]...)
-	fmt.Printf(" > %v\n\n", toprnt)
+	result := append(slice[position+1:position+1], slice[position:found]...)
 	slice[position] = value
+	return &result
 }
 
 func reverse(slice MyIntSlice) MyIntSlice {

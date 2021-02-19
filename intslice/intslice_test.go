@@ -27,7 +27,7 @@ var _ = Describe("intslice.MyIntSlice", func() {
 		twoElementSlice = intslice.MyIntSlice{2, 1}
 		moreThanTwoElementSlice = intslice.MyIntSlice{5, 7, 4, 9, 1}
 		rand.Seed(time.Now().UnixNano())
-		manyElementSlice = rand.Perm(8)
+		manyElementSlice = rand.Perm(9999)
 		slice1 = make(intslice.MyIntSlice, len(manyElementSlice))
 		copy(slice1, manyElementSlice)
 		slice2 = make(intslice.MyIntSlice, len(manyElementSlice))
