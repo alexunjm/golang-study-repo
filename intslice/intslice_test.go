@@ -35,7 +35,7 @@ var _ = Describe("IntSlice", func() {
 
 		Context("with x3", func() {
 			It("should be y3", func() {
-				Expect(twoElementSlice).To(Equal(IntSlice{1, 2}))
+				Expect(twoElementSlice).To(Equal(IntSlice{2, 1}))
 			})
 		})
 
