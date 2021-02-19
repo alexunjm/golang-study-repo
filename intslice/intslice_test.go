@@ -36,25 +36,25 @@ var _ = Describe("intslice.MyIntSlice", func() {
 	Describe("slice creation", func() {
 		Context("with no elements", func() {
 			It("should be an empty int slice", func() {
-				Expect(emptySlice).To(BeEquivalentTo([]int{}))
+				Expect(emptySlice).Should(BeEquivalentTo([]int{}))
 			})
 		})
 
 		Context("with one element", func() {
 			It("should be have same int value on int slice", func() {
-				Expect(oneElementSlice).To(BeEquivalentTo([]int{1}))
+				Expect(oneElementSlice).Should(BeEquivalentTo([]int{1}))
 			})
 		})
 
 		Context("with two elements", func() {
 			It("should be have same int values on int slice", func() {
-				Expect(twoElementSlice).To(BeEquivalentTo([]int{2, 1}))
+				Expect(twoElementSlice).Should(BeEquivalentTo([]int{2, 1}))
 			})
 		})
 
 		Context("with more than two elements", func() {
 			It("should be have same int values on int slice with same elements", func() {
-				Expect(moreThanTwoElementSlice).To(BeEquivalentTo([]int{5, 7, 4, 9, 1}))
+				Expect(moreThanTwoElementSlice).Should(BeEquivalentTo([]int{5, 7, 4, 9, 1}))
 			})
 		})
 	})
@@ -62,31 +62,31 @@ var _ = Describe("intslice.MyIntSlice", func() {
 	Describe("MyIntSlice sort", func() {
 		Context("with no elements", func() {
 			It("should be an empty int slice", func() {
-				Expect(intslice.Sort(emptySlice)).To(BeEquivalentTo([]int{}))
+				Expect(intslice.Sort(emptySlice)).Should(BeEquivalentTo([]int{}))
 			})
 		})
 
 		Context("with one element", func() {
 			It("should be same int value slice", func() {
-				Expect(intslice.Sort(oneElementSlice)).To(BeEquivalentTo([]int{1}))
+				Expect(intslice.Sort(oneElementSlice)).Should(BeEquivalentTo([]int{1}))
 			})
 		})
 
 		Context("with two desc element", func() {
 			It("should be same int value slice", func() {
-				Expect(intslice.Sort(twoElementSlice)).To(BeEquivalentTo([]int{1, 2}))
+				Expect(intslice.Sort(twoElementSlice)).Should(BeEquivalentTo([]int{1, 2}))
 			})
 		})
 
 		Context("with more than two unsorted elements", func() {
 			It("should be have same int values on int slice with same elements sorted", func() {
-				Expect(intslice.Sort(moreThanTwoElementSlice)).To(BeEquivalentTo([]int{1, 4, 5, 7, 9}))
+				Expect(intslice.Sort(moreThanTwoElementSlice)).Should(BeEquivalentTo([]int{1, 4, 5, 7, 9}))
 			})
 		})
 
 		Context("with many unsorted elements", func() {
 			It("should be have same int values on int slice with same elements sorted", func() {
-				Expect(intslice.Sort(manyElementSlice)).To(BeEquivalentTo([]int{1}))
+				Expect(sort.IntsAreSorted(intslice.Sort(manyElementSlice))).Should(BeTrue())
 			})
 		})
 	})
@@ -95,35 +95,35 @@ var _ = Describe("intslice.MyIntSlice", func() {
 		Context("with no elements", func() {
 			It("should be an empty int slice", func() {
 				sort.Ints(emptySlice)
-				Expect(emptySlice).To(BeEquivalentTo([]int{}))
+				Expect(emptySlice).Should(BeEquivalentTo([]int{}))
 			})
 		})
 
 		Context("with one element", func() {
 			It("should be same int value slice", func() {
 				sort.Ints(oneElementSlice)
-				Expect(oneElementSlice).To(BeEquivalentTo([]int{1}))
+				Expect(oneElementSlice).Should(BeEquivalentTo([]int{1}))
 			})
 		})
 
 		Context("with two desc element", func() {
 			It("should be same int value slice", func() {
 				sort.Ints(twoElementSlice)
-				Expect(twoElementSlice).To(BeEquivalentTo([]int{1, 2}))
+				Expect(twoElementSlice).Should(BeEquivalentTo([]int{1, 2}))
 			})
 		})
 
 		Context("with more than two unsorted elements", func() {
 			It("should be have same int values on int slice with same elements sorted", func() {
 				sort.Ints(moreThanTwoElementSlice)
-				Expect(moreThanTwoElementSlice).To(BeEquivalentTo([]int{1, 4, 5, 7, 9}))
+				Expect(moreThanTwoElementSlice).Should(BeEquivalentTo([]int{1, 4, 5, 7, 9}))
 			})
 		})
 
 		Context("with many unsorted elements", func() {
 			It("should be have same int values on int slice with same elements sorted", func() {
 				sort.Ints(manyElementSlice)
-				Expect(manyElementSlice).To(BeEquivalentTo([]int{1}))
+				Expect(sort.IntsAreSorted(manyElementSlice)).Should(BeTrue())
 			})
 		})
 	})
