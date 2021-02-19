@@ -6,22 +6,11 @@ package intslice
 
 */
 
-// IntSlice shortcut for []int
-type IntSlice []int
+// MyIntSlice shortcut for []int
+type MyIntSlice []int
 
 // Sort elements
-func (s IntSlice) Sort() IntSlice {
-
-	return sort(s)
-}
-
-/*
-
-	private
-
-*/
-
-func sort(sliceArg IntSlice) IntSlice {
+func Sort(sliceArg MyIntSlice) MyIntSlice {
 
 	var (
 		slicePointerValue int
@@ -29,7 +18,7 @@ func sort(sliceArg IntSlice) IntSlice {
 		pointerLeft       int
 	)
 
-	slice := make(IntSlice, len(sliceArg))
+	slice := make(MyIntSlice, len(sliceArg))
 	copy(slice, sliceArg)
 
 	for pointer, slicePointerValue = range slice {
@@ -58,7 +47,13 @@ func sort(sliceArg IntSlice) IntSlice {
 	return slice
 }
 
-func movement(slice IntSlice, found int, position int) {
+/*
+
+	private
+
+*/
+
+func movement(slice MyIntSlice, found int, position int) {
 
 	if found == position {
 		return
@@ -73,9 +68,9 @@ func movement(slice IntSlice, found int, position int) {
 	slice[position] = value
 }
 
-func reverse(slice IntSlice) IntSlice {
+func reverse(slice MyIntSlice) MyIntSlice {
 
-	s := make(IntSlice, len(slice))
+	s := make(MyIntSlice, len(slice))
 	copy(s, slice)
 
 	var opp int

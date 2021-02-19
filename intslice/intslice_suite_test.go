@@ -1,7 +1,6 @@
 package intslice_test
 
 import (
-	"sort"
 	"testing"
 
 	"github.com/onsi/ginkgo"
@@ -21,14 +20,12 @@ type Reporter interface {
 
 func TestIntSlice(t *testing.T) {
 	// RegisterFailHandler(Fail)
-	// RunSpecs(t, "IntSlice Suite")
+	// RunSpecs(t, "MyIntSlice Suite")
 	RegisterFailHandler(Fail)
 	junitReporter := reporters.NewJUnitReporter("junit.xml")
 	reporters := []ginkgo.Reporter{junitReporter}
-	RunSpecsWithDefaultAndCustomReporters(t, "IntSlice Suite", reporters)
+	RunSpecsWithDefaultAndCustomReporters(t, "MyIntSlice Suite", reporters)
 }
-
-type IntSlice sort.IntSlice
 
 // Declarations for Ginkgo DSL
 type Done ginkgo.Done

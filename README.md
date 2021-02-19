@@ -9,3 +9,4 @@ go build main.go
 
 ## tests
 ginkgo -r --v
+ginkgo watch intslice/ --v
