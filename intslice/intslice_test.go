@@ -116,23 +116,23 @@ var _ = Describe("intslice.MyIntSlice", func() {
 	})
 
 	Describe("compare sorts", func() {
-		Context("mine with many unsorted elements", func() {
-			It("should be have same int values on int slice with same elements sorted", func() {
-				sort.Ints(manyElementSlice)
-				Expect(sort.IntsAreSorted(manyElementSlice)).Should(BeTrue())
+
+		slice1 := make(intslice.MyIntSlice, len(manyElementSlice))
+		copy(slice1, manyElementSlice)
+
+		Context("with many unsorted elements", func() {
+			It("should be have same int values on int slice with same elements sorted go", func() {
+				Expect(sort.IntsAreSorted(intslice.Sort(slice1))).Should(BeTrue())
 			})
 		})
 
-		Context("go with many unsorted elements", func() {
-			It("should be have same int values on int slice with same elements sorted", func() {
-				Expect(sort.IntsAreSorted(intslice.Sort(manyElementSlice))).Should(BeTrue())
-			})
-		})
+		slice2 := make(intslice.MyIntSlice, len(manyElementSlice))
+		copy(slice2, manyElementSlice)
 
-		Context("mine with many unsorted elements", func() {
-			It("should be have same int values on int slice with same elements sorted", func() {
-				sort.Ints(manyElementSlice)
-				Expect(sort.IntsAreSorted(manyElementSlice)).Should(BeTrue())
+		Context("with many unsorted elements", func() {
+			It("should be have same int values on int slice with same elements sorted mine", func() {
+				sort.Ints(slice2)
+				Expect(sort.IntsAreSorted(slice2)).Should(BeTrue())
 			})
 		})
 	})

@@ -10,7 +10,7 @@ package intslice
 type MyIntSlice []int
 
 // Sort elements
-func Sort(slice MyIntSlice) MyIntSlice {
+func Sort(sliceArg MyIntSlice) MyIntSlice {
 
 	var (
 		slicePointerValue int
@@ -20,15 +20,16 @@ func Sort(slice MyIntSlice) MyIntSlice {
 		pointerRight      int
 	)
 
-	// slice := make(MyIntSlice, len(sliceArg))
-	// copy(slice, sliceArg)
+	size := len(sliceArg)
+	slice := make(MyIntSlice, size*2)
+	copy(slice[size:], sliceArg)
 
 	// splitIndex := len(slice) / 2
 	// makeMoves(pointer, slicePointerValue, slice[:splitIndex], pointerRight, pointerLeft, pointerChange)
 	// makeMoves(pointer, slicePointerValue, slice[splitIndex:], pointerRight, pointerLeft, pointerChange)
-	makeMoves(pointer, slicePointerValue, slice, pointerRight, pointerLeft, pointerChange)
+	makeMoves(pointer, slicePointerValue, slice[size:], pointerRight, pointerLeft, pointerChange)
 
-	return slice
+	return slice[size:]
 }
 
 func makeMoves(pointer int, slicePointerValue int, slice MyIntSlice, pointerRight int, pointerLeft int, pointerChange int) {
