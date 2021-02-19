@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <testsuite name="IntSlice Suite" tests="8" failures="3" errors="0" time="0">
+      <testcase name="IntSlice test 1 with x1 should be y1" classname="IntSlice Suite" time="1.262e-06">
+          <failure type="Failure">/go/src/github.com/alexunjm/golang-study-repo/intslice/intslice_test.go:15&#xA;You may only call BeforeEach from within a Describe, Context or When&#xA;/go/src/github.com/alexunjm/golang-study-repo/intslice/intslice_test.go:15</failure>
+      </testcase>
+      <testcase name="IntSlice test 1 with x2 should be y2" classname="IntSlice Suite" time="3.448e-06"></testcase>
+      <testcase name="IntSlice test 1 with x3 should be y3" classname="IntSlice Suite" time="0.000215436">
+          <failure type="Failure">/go/src/github.com/alexunjm/golang-study-repo/intslice/intslice_test.go:37&#xA;Expected&#xA;    &lt;intslice_test.IntSlice | len:2, cap:2&gt;: [2, 1]&#xA;to be equivalent to&#xA;    &lt;intslice_test.IntSlice | len:2, cap:2&gt;: [1, 2]&#xA;/go/src/github.com/alexunjm/golang-study-repo/intslice/intslice_test.go:38</failure>
+      </testcase>
+      <testcase name="IntSlice test 1 with x4 should be y4" classname="IntSlice Suite" time="3.726e-06"></testcase>
+      <testcase name="IntSlice test 1 with x1 should be y1" classname="IntSlice Suite" time="2.151e-06"></testcase>
+      <testcase name="IntSlice test 1 with x2 should be y2" classname="IntSlice Suite" time="3.65e-06"></testcase>
+      <testcase name="IntSlice test 1 with x3 should be y3" classname="IntSlice Suite" time="0.000200889">
+          <failure type="Failure">/go/src/github.com/alexunjm/golang-study-repo/intslice/intslice_test.go:37&#xA;Expected&#xA;    &lt;intslice_test.IntSlice | len:2, cap:2&gt;: [2, 1]&#xA;to be equivalent to&#xA;    &lt;intslice_test.IntSlice | len:2, cap:2&gt;: [1, 2]&#xA;/go/src/github.com/alexunjm/golang-study-repo/intslice/intslice_test.go:38</failure>
+      </testcase>
+      <testcase name="IntSlice test 1 with x4 should be y4" classname="IntSlice Suite" time="5.192e-06"></testcase>
+  </testsuite>

@@ -1,16 +1,34 @@
-package sort
+package intslice_test
 
 import (
+	"sort"
 	"testing"
 
 	"github.com/onsi/ginkgo"
+	"github.com/onsi/ginkgo/reporters"
 	"github.com/onsi/gomega"
 )
 
-func TestSort(t *testing.T) {
+/*
+type Reporter interface {
+	SpecSuiteWillBegin(config config.GinkgoConfigType, summary *types.SuiteSummary)
+	BeforeSuiteDidRun(setupSummary *types.SetupSummary)
+	SpecWillRun(specSummary *types.SpecSummary)
+	SpecDidComplete(specSummary *types.SpecSummary)
+	AfterSuiteDidRun(setupSummary *types.SetupSummary)
+	SpecSuiteDidEnd(summary *types.SuiteSummary)
+} */
+
+func TestIntSlice(t *testing.T) {
+	// RegisterFailHandler(Fail)
+	// RunSpecs(t, "IntSlice Suite")
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Sort Suite")
+	junitReporter := reporters.NewJUnitReporter("junit.xml")
+	reporters := []ginkgo.Reporter{junitReporter}
+	RunSpecsWithDefaultAndCustomReporters(t, "IntSlice Suite", reporters)
 }
+
+type IntSlice sort.IntSlice
 
 // Declarations for Ginkgo DSL
 type Done ginkgo.Done

@@ -1,4 +1,4 @@
-package sort_test
+package intslice
 
 import (
 	"testing"
@@ -7,9 +7,9 @@ import (
 	"github.com/onsi/gomega"
 )
 
-func TestSort(t *testing.T) {
+func TestIntSlicePrivate(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Sort Suite")
+	RunSpecs(t, "IntSlice Suite (private)")
 }
 
 // Declarations for Ginkgo DSL

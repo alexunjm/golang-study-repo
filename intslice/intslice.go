@@ -1,17 +1,36 @@
-package sort
+package intslice
 
-type intSlice []int
+/*
 
-func sort(sliceArg intSlice) intSlice {
+	public
+
+*/
+
+// IntSlice shortcut for []int
+type IntSlice []int
+
+// Sort elements
+func (s IntSlice) Sort() IntSlice {
+
+	return sort(s)
+}
+
+/*
+
+	private
+
+*/
+
+func sort(sliceArg IntSlice) IntSlice {
+
 	var (
 		slicePointerValue int
 		pointer           = 1
 		pointerLeft       int
 	)
-	// println(&sliceArg)
-	slice := make(intSlice, len(sliceArg))
+
+	slice := make(IntSlice, len(sliceArg))
 	copy(slice, sliceArg)
-	// println(&slice)
 
 	for pointer, slicePointerValue = range slice {
 
@@ -35,28 +54,28 @@ func sort(sliceArg intSlice) intSlice {
 		}
 		movement(slice, pointer, pointerLeft)
 	}
+
 	return slice
 }
 
-func movement(slice intSlice, found int, position int) {
+func movement(slice IntSlice, found int, position int) {
+
 	if found == position {
 		return
 	}
-	// front := slice[:position]
+
 	value := slice[found]
-	// move1 := slice[position:found]
-	// move2 := slice[found+1:]
+
 	for pointer := found; pointer > position; pointer-- {
 		slice[pointer] = slice[pointer-1]
 	}
+
 	slice[position] = value
-	// fmt.Printf(strconv.Itoa(found) + "m" + strconv.Itoa(position) + " ")
-	// fmt.Println(slice)
-	// prettyslice.Show(strconv.Itoa(found)+"m"+strconv.Itoa(position), slice)
 }
 
-func reverse(slice intSlice) intSlice {
-	s := make(intSlice, len(slice))
+func reverse(slice IntSlice) IntSlice {
+
+	s := make(IntSlice, len(slice))
 	copy(s, slice)
 
 	var opp int
