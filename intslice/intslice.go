@@ -15,7 +15,9 @@ func Sort(sliceArg MyIntSlice) MyIntSlice {
 	var (
 		slicePointerValue int
 		pointer           = 1
+		pointerChange     int
 		pointerLeft       int
+		pointerRight      int
 	)
 
 	slice := make(MyIntSlice, len(sliceArg))
@@ -23,25 +25,33 @@ func Sort(sliceArg MyIntSlice) MyIntSlice {
 
 	for pointer, slicePointerValue = range slice {
 
-		pointerLeft = pointer - 1
+		pointerRight = pointer - 1
 
-		if pointerLeft < 0 {
+		if pointerRight < 0 {
 			continue
 		}
+		pointerLeft = 0
 		for {
-			if pointerLeft < 0 {
-				pointerLeft = 0
+			if pointerRight < 0 {
+				pointerChange = 0
 				break
 			}
-			if slice[pointerLeft] > slicePointerValue {
-				pointerLeft--
+			if slice[pointerRight] > slicePointerValue {
+				pointerRight--
+				if slice[pointerLeft] > slicePointerValue {
+					if pointerLeft <= 0 {
+						pointerChange = 0
+					}
+					pointerChange = pointerLeft
+					break
+				}
 				continue
 			} else {
-				pointerLeft++
+				pointerChange = pointerRight + 1
 				break
 			}
 		}
-		movement(slice, pointer, pointerLeft)
+		movement(slice, pointer, pointerChange)
 	}
 
 	return slice
