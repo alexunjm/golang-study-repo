@@ -19,6 +19,8 @@ func Sort(sliceArg MyIntSlice) MyIntSlice {
 	// return slice[startIndex : startIndex+size]
 
 	// startIndex :=
+	makeMoves(sliceArg, 0, size/2)
+	makeMoves(sliceArg, size/2, size)
 	makeMoves(sliceArg, 0, size)
 
 	return sliceArg

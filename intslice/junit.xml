@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <testsuite name="MyIntSlice Suite" tests="14" failures="0" errors="0" time="0.032">
-      <testcase name="intslice.MyIntSlice slice creation with no elements should be an empty int slice" classname="MyIntSlice Suite" time="0.000401836"></testcase>
-      <testcase name="intslice.MyIntSlice slice creation with one element should be have same int value on int slice" classname="MyIntSlice Suite" time="0.000476134"></testcase>
-      <testcase name="intslice.MyIntSlice slice creation with two elements should be have same int values on int slice" classname="MyIntSlice Suite" time="0.000352398"></testcase>
-      <testcase name="intslice.MyIntSlice slice creation with more than two elements should be have same int values on int slice with same elements" classname="MyIntSlice Suite" time="0.00035453"></testcase>
-      <testcase name="intslice.MyIntSlice MyIntSlice sort with no elements should be an empty int slice" classname="MyIntSlice Suite" time="0.000351142"></testcase>
-      <testcase name="intslice.MyIntSlice MyIntSlice sort with one element should be same int value slice" classname="MyIntSlice Suite" time="0.000381199"></testcase>
-      <testcase name="intslice.MyIntSlice MyIntSlice sort with two desc element should be same int value slice" classname="MyIntSlice Suite" time="0.00035116"></testcase>
-      <testcase name="intslice.MyIntSlice MyIntSlice sort with more than two unsorted elements should be have same int values on int slice with same elements sorted" classname="MyIntSlice Suite" time="0.000394759"></testcase>
-      <testcase name="intslice.MyIntSlice go intSlice sort with no elements should be an empty int slice" classname="MyIntSlice Suite" time="0.000349225"></testcase>
-      <testcase name="intslice.MyIntSlice go intSlice sort with one element should be same int value slice" classname="MyIntSlice Suite" time="0.000353539"></testcase>
-      <testcase name="intslice.MyIntSlice go intSlice sort with two desc element should be same int value slice" classname="MyIntSlice Suite" time="0.001356158"></testcase>
-      <testcase name="intslice.MyIntSlice go intSlice sort with more than two unsorted elements should be have same int values on int slice with same elements sorted" classname="MyIntSlice Suite" time="0.000359584"></testcase>
-      <testcase name="intslice.MyIntSlice compare sorts with many unsorted elements should be have same int values on int slice with same elements sorted go" classname="MyIntSlice Suite" time="0.024669052"></testcase>
-      <testcase name="intslice.MyIntSlice compare sorts with many unsorted elements should be have same int values on int slice with same elements sorted mine" classname="MyIntSlice Suite" time="0.001879263"></testcase>
+  <testsuite name="MyIntSlice Suite" tests="15" failures="0" errors="0" time="0">
+      <testcase name="intslice.MyIntSlice slice creation with no elements should be an empty int slice" classname="MyIntSlice Suite" time="2.8256e-05"></testcase>
+      <testcase name="intslice.MyIntSlice slice creation with one element should be have same int value on int slice" classname="MyIntSlice Suite" time="1.3731e-05"></testcase>
+      <testcase name="intslice.MyIntSlice slice creation with two elements should be have same int values on int slice" classname="MyIntSlice Suite" time="1.5946e-05"></testcase>
+      <testcase name="intslice.MyIntSlice slice creation with more than two elements should be have same int values on int slice with same elements" classname="MyIntSlice Suite" time="1.288e-05"></testcase>
+      <testcase name="intslice.MyIntSlice MyIntSlice sort with no elements should be an empty int slice" classname="MyIntSlice Suite" time="1.5739e-05"></testcase>
+      <testcase name="intslice.MyIntSlice MyIntSlice sort with one element should be same int value slice" classname="MyIntSlice Suite" time="1.2538e-05"></testcase>
+      <testcase name="intslice.MyIntSlice MyIntSlice sort with two desc element should be same int value slice" classname="MyIntSlice Suite" time="1.7937e-05"></testcase>
+      <testcase name="intslice.MyIntSlice MyIntSlice sort with more than two unsorted elements should be have same int values on int slice with same elements sorted" classname="MyIntSlice Suite" time="1.2967e-05"></testcase>
+      <testcase name="intslice.MyIntSlice go intSlice sort with no elements should be an empty int slice" classname="MyIntSlice Suite" time="1.2588e-05"></testcase>
+      <testcase name="intslice.MyIntSlice go intSlice sort with one element should be same int value slice" classname="MyIntSlice Suite" time="1.5541e-05"></testcase>
+      <testcase name="intslice.MyIntSlice go intSlice sort with two desc element should be same int value slice" classname="MyIntSlice Suite" time="1.2629e-05"></testcase>
+      <testcase name="intslice.MyIntSlice go intSlice sort with more than two unsorted elements should be have same int values on int slice with same elements sorted" classname="MyIntSlice Suite" time="1.6221e-05"></testcase>
+      <testcase name="intslice.MyIntSlice compare sorts with many unsorted elements should be have same int values on int slice with same elements sorted mine" classname="MyIntSlice Suite" time="1.7439e-05"></testcase>
+      <testcase name="intslice.MyIntSlice compare sorts with many unsorted elements should be have same int values on int slice with same elements sorted go" classname="MyIntSlice Suite" time="2.2271e-05"></testcase>
+      <testcase name="intslice.MyIntSlice compare sorts with many unsorted elements should be have same int values on int slice with same elements sorted mine 2" classname="MyIntSlice Suite" time="2.0656e-05"></testcase>
   </testsuite>

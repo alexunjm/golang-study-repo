@@ -18,6 +18,7 @@ var _ = Describe("intslice.MyIntSlice", func() {
 		manyElementSlice        intslice.MyIntSlice
 		slice1                  intslice.MyIntSlice
 		slice2                  intslice.MyIntSlice
+		slice3                  intslice.MyIntSlice
 	)
 
 	BeforeEach(func() {
@@ -26,12 +27,16 @@ var _ = Describe("intslice.MyIntSlice", func() {
 		oneElementSlice = intslice.MyIntSlice{1}
 		twoElementSlice = intslice.MyIntSlice{2, 1}
 		moreThanTwoElementSlice = intslice.MyIntSlice{5, 7, 4, 9, 1}
+
 		rand.Seed(time.Now().UnixNano())
-		manyElementSlice = rand.Perm(9999)
+		manyElementSlice = rand.Perm(99)
+
 		slice1 = make(intslice.MyIntSlice, len(manyElementSlice))
 		copy(slice1, manyElementSlice)
 		slice2 = make(intslice.MyIntSlice, len(manyElementSlice))
 		copy(slice2, manyElementSlice)
+		slice3 = make(intslice.MyIntSlice, len(manyElementSlice))
+		copy(slice3, manyElementSlice)
 
 	})
 	Describe("slice creation", func() {
@@ -118,15 +123,24 @@ var _ = Describe("intslice.MyIntSlice", func() {
 	Describe("compare sorts", func() {
 
 		Context("with many unsorted elements", func() {
-			It("should be have same int values on int slice with same elements sorted go", func() {
-				Expect(sort.IntsAreSorted(intslice.Sort(slice1))).Should(BeTrue())
+			It("should be have same int values on int slice with same elements sorted mine", func() {
+				intslice.Sort(slice2)
+				Expect(sort.IntsAreSorted(slice2)).Should(BeTrue())
 			})
 		})
 
 		Context("with many unsorted elements", func() {
-			It("should be have same int values on int slice with same elements sorted mine", func() {
+			It("should be have same int values on int slice with same elements sorted go", func() {
 				sort.Ints(slice2)
 				Expect(sort.IntsAreSorted(slice2)).Should(BeTrue())
+			})
+		})
+
+		Context("with many unsorted elements", func() {
+			It("should be have same int values on int slice with same elements sorted mine 2", func() {
+				intslice.Sort2(slice3)
+				Expect(sort.IntsAreSorted(slice3)).Should(BeTrue())
+				// Expect(slice3).Should(BeEquivalentTo([]int{1}))
 			})
 		})
 	})
