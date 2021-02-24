@@ -4,8 +4,9 @@ import (
 	"errors"
 	"net/http"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/04-02-application-service-test/internal"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/04-02-application-service-test/internal/creating"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/04-03-command-bus/internal"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/04-03-command-bus/internal/creating"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/04-03-command-bus/kit/command"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,7 +17,7 @@ type createRequest struct {
 }
 
 // CreateHandler returns an HTTP handler for courses creation.
-func CreateHandler(creatingCourseService creating.CourseService) gin.HandlerFunc {
+func CreateHandler(commandBus command.Bus) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var req createRequest
 		if err := ctx.BindJSON(&req); err != nil {
@@ -24,7 +25,11 @@ func CreateHandler(creatingCourseService creating.CourseService) gin.HandlerFunc
 			return
 		}
 
-		err := creatingCourseService.CreateCourse(ctx, req.ID, req.Name, req.Duration)
+		err := commandBus.Dispatch(ctx, creating.NewCourseCommand(
+			req.ID,
+			req.Name,
+			req.Duration,
+		))
 
 		if err != nil {
 			switch {

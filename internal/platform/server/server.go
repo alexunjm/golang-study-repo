@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/04-02-application-service-test/internal/creating"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/04-02-application-service-test/internal/platform/server/handler/courses"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/04-02-application-service-test/internal/platform/server/handler/health"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/04-03-command-bus/internal/platform/server/handler/courses"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/04-03-command-bus/internal/platform/server/handler/health"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/04-03-command-bus/kit/command"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,15 +15,15 @@ type Server struct {
 	engine   *gin.Engine
 
 	// deps
-	creatingCourseService creating.CourseService
+	commandBus command.Bus
 }
 
-func New(host string, port uint, creatingCourseService creating.CourseService) Server {
+func New(host string, port uint, commandBus command.Bus) Server {
 	srv := Server{
 		engine:   gin.New(),
 		httpAddr: fmt.Sprintf("%s:%d", host, port),
 
-		creatingCourseService: creatingCourseService,
+		commandBus: commandBus,
 	}
 
 	srv.registerRoutes()
@@ -37,5 +37,5 @@ func (s *Server) Run() error {
 
 func (s *Server) registerRoutes() {
 	s.engine.GET("/health", health.CheckHandler())
-	s.engine.POST("/courses", courses.CreateHandler(s.creatingCourseService))
+	s.engine.POST("/courses", courses.CreateHandler(s.commandBus))
 }
