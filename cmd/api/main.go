@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/05-01-graceful-shutdown/cmd/api/bootstrap"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/05-02-timeouts/cmd/api/bootstrap"
 )
 
 func main() {
