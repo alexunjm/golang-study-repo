@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/06-03-gin-middlewares/internal"
 	"github.com/DATA-DOG/go-sqlmock"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/internal"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -35,6 +35,7 @@ func Test_CourseRepository_Save_RepositoryError(t *testing.T) {
 
 func Test_CourseRepository_Save_Succeed(t *testing.T) {
 	courseID, courseName, courseDuration := "37a0f027-15e6-47cc-a5d2-64183281087e", "Test Course", "10 months"
+
 	course, err := mooc.NewCourse(courseID, courseName, courseDuration)
 	require.NoError(t, err)
 

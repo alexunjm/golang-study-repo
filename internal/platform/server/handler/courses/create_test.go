@@ -7,14 +7,14 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/06-03-gin-middlewares/kit/command/commandmocks"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/kit/command/commandmocks"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 )
 
-func TestHandler_Create(t *testing.T) {
+func TestHandler_Create_ServiceError(t *testing.T) {
 	commandBus := new(commandmocks.Bus)
 	commandBus.On(
 		"Dispatch",

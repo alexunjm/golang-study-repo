@@ -2,9 +2,8 @@ package inmemory
 
 import (
 	"context"
-	"log"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/06-03-gin-middlewares/kit/command"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/kit/command"
 )
 
 // CommandBus is an in-memory implementation of the command.Bus.
@@ -26,15 +25,7 @@ func (b *CommandBus) Dispatch(ctx context.Context, cmd command.Command) error {
 		return nil
 	}
 
-	go func() {
-		err := handler.Handle(ctx, cmd)
-		if err != nil {
-			log.Printf("Error while handling %s - %s\n", cmd.Type(), err)
-		}
-
-	}()
-
-	return nil
+	return handler.Handle(ctx, cmd)
 }
 
 // Register implements the command.Bus interface.
