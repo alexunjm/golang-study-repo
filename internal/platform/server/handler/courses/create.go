@@ -3,7 +3,7 @@ package courses
 import (
 	"net/http"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/02-03-controller-test/internal"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/02-04-domain-validations/internal"
 	"github.com/gin-gonic/gin"
 )
 
@@ -22,7 +22,12 @@ func CreateHandler(courseRepository mooc.CourseRepository) gin.HandlerFunc {
 			return
 		}
 
-		course := mooc.NewCourse(req.ID, req.Name, req.Duration)
+		course, err := mooc.NewCourse(req.ID, req.Name, req.Duration)
+		if err != nil {
+			ctx.JSON(http.StatusBadRequest, err.Error())
+			return
+		}
+
 		if err := courseRepository.Save(ctx, course); err != nil {
 			ctx.JSON(http.StatusInternalServerError, err.Error())
 			return
