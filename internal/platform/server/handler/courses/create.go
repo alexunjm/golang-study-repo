@@ -4,9 +4,9 @@ import (
 	"errors"
 	"net/http"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/04-03-command-bus/internal"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/04-03-command-bus/internal/creating"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/04-03-command-bus/kit/command"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/05-01-graceful-shutdown/internal"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/05-01-graceful-shutdown/internal/creating"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/05-01-graceful-shutdown/kit/command"
 	"github.com/gin-gonic/gin"
 )
 

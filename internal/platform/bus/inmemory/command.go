@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/04-03-command-bus/kit/command"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/05-01-graceful-shutdown/kit/command"
 )
 
 // CommandBus is an in-memory implementation of the command.Bus.
