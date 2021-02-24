@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-03-event-bus-implementation/kit/event"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/08-01-reading-env-variables/kit/event"
 	"github.com/google/uuid"
 )
 
