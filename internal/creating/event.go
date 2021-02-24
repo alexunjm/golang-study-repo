@@ -4,9 +4,9 @@ import (
 	"context"
 	"errors"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal/increasing"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/kit/event"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/07-03-event-bus-implementation/internal"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-03-event-bus-implementation/internal/increasing"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-03-event-bus-implementation/kit/event"
 )
 
 type IncreaseCoursesCounterOnCourseCreated struct {
