@@ -5,7 +5,7 @@ package eventmocks
 import (
 	context "context"
 
-	event "github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/kit/event"
+	event "github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/kit/event"
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -26,4 +26,9 @@ func (_m *Bus) Publish(_a0 context.Context, _a1 []event.Event) error {
 	}
 
 	return r0
+}
+
+// Subscribe provides a mock function with given fields: _a0, _a1
+func (_m *Bus) Subscribe(_a0 event.Type, _a1 event.Handler) {
+	_m.Called(_a0, _a1)
 }

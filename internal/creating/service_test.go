@@ -5,8 +5,10 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/internal/platform/storage/storagemocks"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/kit/event/eventmocks"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal/platform/storage/storagemocks"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/kit/event"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/kit/event/eventmocks"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 )
@@ -59,6 +61,11 @@ func Test_CourseService_CreateCourse_Succeed(t *testing.T) {
 	courseRepositoryMock.On("Save", mock.Anything, mock.AnythingOfType("mooc.Course")).Return(nil)
 
 	eventBusMock := new(eventmocks.Bus)
+	eventBusMock.On("Publish", mock.Anything, mock.MatchedBy(func(events []event.Event) bool {
+		evt := events[0].(mooc.CourseCreatedEvent)
+		return evt.CourseName() == courseName
+	})).Return(nil)
+
 	eventBusMock.On("Publish", mock.Anything, mock.AnythingOfType("[]event.Event")).Return(nil)
 
 	courseService := NewCourseService(courseRepositoryMock, eventBusMock)

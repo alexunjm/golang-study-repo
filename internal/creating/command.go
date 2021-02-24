@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/kit/command"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/kit/command"
 )
 
 const CourseCommandType command.Type = "command.creating.course"

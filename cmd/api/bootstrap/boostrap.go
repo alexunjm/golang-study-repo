@@ -6,10 +6,12 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/internal/creating"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/internal/platform/bus/inmemory"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/internal/platform/server"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/internal/platform/storage/mysql"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal/creating"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal/increasing"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal/platform/bus/inmemory"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal/platform/server"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal/platform/storage/mysql"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -41,9 +43,15 @@ func Run() error {
 	courseRepository := mysql.NewCourseRepository(db, dbTimeout)
 
 	creatingCourseService := creating.NewCourseService(courseRepository, eventBus)
+	increasingCourseCounterService := increasing.NewCourseCounterService()
 
 	createCourseCommandHandler := creating.NewCourseCommandHandler(creatingCourseService)
 	commandBus.Register(creating.CourseCommandType, createCourseCommandHandler)
+
+	eventBus.Subscribe(
+		mooc.CourseCreatedEventType,
+		creating.NewIncreaseCoursesCounterOnCourseCreated(increasingCourseCounterService),
+	)
 
 	ctx, srv := server.New(context.Background(), host, port, shutdownTimeout, commandBus)
 	return srv.Run(ctx)

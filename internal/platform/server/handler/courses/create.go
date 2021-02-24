@@ -4,9 +4,9 @@ import (
 	"errors"
 	"net/http"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/internal"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/internal/creating"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/07-01-publishing-domain-events/kit/command"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/internal/creating"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/07-02-domain-events-subscriber/kit/command"
 	"github.com/gin-gonic/gin"
 )
 
