@@ -9,9 +9,11 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/05-02-timeouts/internal/platform/server/handler/courses"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/05-02-timeouts/internal/platform/server/handler/health"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/05-02-timeouts/kit/command"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/06-02-time-parse-in-go/internal/platform/server/handler/courses"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/06-02-time-parse-in-go/internal/platform/server/handler/health"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/06-02-time-parse-in-go/internal/platform/server/middleware/logging"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/06-02-time-parse-in-go/internal/platform/server/middleware/recovery"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/06-02-time-parse-in-go/kit/command"
 	"github.com/gin-gonic/gin"
 )
 
@@ -40,6 +42,8 @@ func New(ctx context.Context, host string, port uint, shutdownTimeout time.Durat
 }
 
 func (s *Server) registerRoutes() {
+	s.engine.Use(recovery.Middleware(), logging.Middleware())
+
 	s.engine.GET("/health", health.CheckHandler())
 	s.engine.POST("/courses", courses.CreateHandler(s.commandBus))
 }

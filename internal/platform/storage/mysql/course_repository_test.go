@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/05-02-timeouts/internal"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/06-02-time-parse-in-go/internal"
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

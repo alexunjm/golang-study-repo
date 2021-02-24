@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/05-02-timeouts/kit/command/commandmocks"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/06-02-time-parse-in-go/kit/command/commandmocks"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
