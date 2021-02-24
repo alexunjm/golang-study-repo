@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/03-02-repository-test/internal"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/04-01-application-service/internal"
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

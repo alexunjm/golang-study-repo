@@ -4,8 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/03-02-repository-test/internal/platform/server"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/03-02-repository-test/internal/platform/storage/mysql"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/04-01-application-service/internal/creating"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/04-01-application-service/internal/platform/server"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/04-01-application-service/internal/platform/storage/mysql"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -29,6 +30,8 @@ func Run() error {
 
 	courseRepository := mysql.NewCourseRepository(db)
 
-	srv := server.New(host, port, courseRepository)
+	creatingCourseService := creating.NewCourseService(courseRepository)
+
+	srv := server.New(host, port, creatingCourseService)
 	return srv.Run()
 }
