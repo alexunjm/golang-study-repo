@@ -3,7 +3,7 @@ package courses
 import (
 	"net/http"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/03-01-mysql-repository-implementation/internal"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/03-02-repository-test/internal"
 	"github.com/gin-gonic/gin"
 )
 

@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"log"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/03-01-mysql-repository-implementation/internal"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/03-01-mysql-repository-implementation/internal/platform/server/handler/courses"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/03-01-mysql-repository-implementation/internal/platform/server/handler/health"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/03-02-repository-test/internal"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/03-02-repository-test/internal/platform/server/handler/courses"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/03-02-repository-test/internal/platform/server/handler/health"
 	"github.com/gin-gonic/gin"
 )
 
