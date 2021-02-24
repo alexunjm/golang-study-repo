@@ -6,12 +6,12 @@ import (
 	"fmt"
 	"time"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/08-02-build-and-deploy/internal"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-02-build-and-deploy/internal/creating"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-02-build-and-deploy/internal/increasing"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-02-build-and-deploy/internal/platform/bus/inmemory"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-02-build-and-deploy/internal/platform/server"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-02-build-and-deploy/internal/platform/storage/mysql"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/creating"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/increasing"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/platform/bus/inmemory"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/platform/server"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/platform/storage/mysql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/kelseyhightower/envconfig"
 )
