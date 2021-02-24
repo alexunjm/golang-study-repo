@@ -4,20 +4,26 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/02-01-post-course-endpoint/internal/platform/server/handler/courses"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/02-01-post-course-endpoint/internal/platform/server/handler/health"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/02-02-repository-injection/internal"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/02-02-repository-injection/internal/platform/server/handler/courses"
+	"github.com/CodelyTV/go-hexagonal_http_api-course/02-02-repository-injection/internal/platform/server/handler/health"
 	"github.com/gin-gonic/gin"
 )
 
 type Server struct {
 	httpAddr string
 	engine   *gin.Engine
+
+	// deps
+	courseRepository mooc.CourseRepository
 }
 
-func New(host string, port uint) Server {
+func New(host string, port uint, courseRepository mooc.CourseRepository) Server {
 	srv := Server{
 		engine:   gin.New(),
 		httpAddr: fmt.Sprintf("%s:%d", host, port),
+
+		courseRepository: courseRepository,
 	}
 
 	srv.registerRoutes()
@@ -31,5 +37,5 @@ func (s *Server) Run() error {
 
 func (s *Server) registerRoutes() {
 	s.engine.GET("/health", health.CheckHandler())
-	s.engine.POST("/courses", courses.CreateHandler())
+	s.engine.POST("/courses", courses.CreateHandler(s.courseRepository))
 }

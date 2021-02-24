@@ -1,21 +1,10 @@
 package courses
 
 import (
-	"database/sql"
-	"fmt"
 	"net/http"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/02-01-post-course-endpoint/internal"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/02-01-post-course-endpoint/internal/platform/storage/mysql"
+	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/02-02-repository-injection/internal"
 	"github.com/gin-gonic/gin"
-)
-
-const (
-	dbUser = "codely"
-	dbPass = "codely"
-	dbHost = "localhost"
-	dbPort = "3306"
-	dbName = "codely"
 )
 
 type createRequest struct {
@@ -25,7 +14,7 @@ type createRequest struct {
 }
 
 // CreateHandler returns an HTTP handler for courses creation.
-func CreateHandler() gin.HandlerFunc {
+func CreateHandler(courseRepository mooc.CourseRepository) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		var req createRequest
 		if err := ctx.BindJSON(&req); err != nil {
@@ -34,16 +23,6 @@ func CreateHandler() gin.HandlerFunc {
 		}
 
 		course := mooc.NewCourse(req.ID, req.Name, req.Duration)
-
-		mysqlURI := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", dbUser, dbPass, dbHost, dbPort, dbName)
-		db, err := sql.Open("mysql", mysqlURI)
-		if err != nil {
-			ctx.JSON(http.StatusInternalServerError, err.Error())
-			return
-		}
-
-		courseRepository := mysql.NewCourseRepository(db)
-
 		if err := courseRepository.Save(ctx, course); err != nil {
 			ctx.JSON(http.StatusInternalServerError, err.Error())
 			return

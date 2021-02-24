@@ -1,5 +1,7 @@
 package mooc
 
+import "context"
+
 // Course is the data structure that represents a course.
 type Course struct {
 	id       string
@@ -14,6 +16,11 @@ func NewCourse(id, name, duration string) Course {
 		name:     name,
 		duration: duration,
 	}
+}
+
+// CourseRepository defines the expected behaviour from a course storage.
+type CourseRepository interface {
+	Save(ctx context.Context, course Course) error
 }
 
 // ID returns the course unique identifier.
