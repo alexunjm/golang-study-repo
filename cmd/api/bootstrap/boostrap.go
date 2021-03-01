@@ -6,14 +6,15 @@ import (
 	"fmt"
 	"time"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/creating"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/increasing"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/platform/bus/inmemory"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/platform/server"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/platform/storage/mysql"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/kelseyhightower/envconfig"
+
+	mooc "github.com/alexunjm/golang_api-example/internal"
+	"github.com/alexunjm/golang_api-example/internal/creating"
+	"github.com/alexunjm/golang_api-example/internal/increasing"
+	"github.com/alexunjm/golang_api-example/internal/platform/bus/inmemory"
+	"github.com/alexunjm/golang_api-example/internal/platform/server"
+	"github.com/alexunjm/golang_api-example/internal/platform/storage/mysql"
 )
 
 func Run() error {

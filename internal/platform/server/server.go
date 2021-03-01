@@ -9,11 +9,11 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/platform/server/handler/courses"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/platform/server/handler/health"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/platform/server/middleware/logging"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/platform/server/middleware/recovery"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/kit/command"
+	"github.com/alexunjm/golang_api-example/internal/platform/server/handler/courses"
+	"github.com/alexunjm/golang_api-example/internal/platform/server/handler/health"
+	"github.com/alexunjm/golang_api-example/internal/platform/server/middleware/logging"
+	"github.com/alexunjm/golang_api-example/internal/platform/server/middleware/recovery"
+	"github.com/alexunjm/golang_api-example/kit/command"
 	"github.com/gin-gonic/gin"
 )
 
@@ -29,7 +29,8 @@ type Server struct {
 
 func New(ctx context.Context, host string, port uint, shutdownTimeout time.Duration, commandBus command.Bus) (context.Context, Server) {
 	srv := Server{
-		engine:   gin.New(),
+		// engine:   gin.New(),
+		engine:   gin.Default(),
 		httpAddr: fmt.Sprintf("%s:%d", host, port),
 
 		shutdownTimeout: shutdownTimeout,

@@ -4,9 +4,9 @@ import (
 	"context"
 	"errors"
 
-	mooc "github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/internal/increasing"
-	"github.com/CodelyTV/go-hexagonal_http_api-course/08-03-debugging/kit/event"
+	mooc "github.com/alexunjm/golang_api-example/internal"
+	"github.com/alexunjm/golang_api-example/internal/increasing"
+	"github.com/alexunjm/golang_api-example/kit/event"
 )
 
 type IncreaseCoursesCounterOnCourseCreated struct {
